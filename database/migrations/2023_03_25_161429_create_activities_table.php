@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('description')->nullable();
             $table->integer('category_id')->unsigned();
+            $table->integer('range_id')->unsigned()->nullable();
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('category');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('range_id')->references('id')->on('ranges');
         });
     }
 
