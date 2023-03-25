@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ActivityController extends Controller
 {
-
     protected function index(Request $request)
     {
         //GET 	/categories
