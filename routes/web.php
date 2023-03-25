@@ -18,4 +18,6 @@ Route::get('/', function () {return view('welcome');});
 
 Route::resources(['categories' => 'App\Http\Controllers\CategoryController']);
 Route::resources(['activity' => 'App\Http\Controllers\ActivityController']);
+Route::resources(['range' => 'App\Http\Controllers\RangeController']);
+Route::resources(['routinies' => 'App\Http\Controllers\RoutiniesController']);
 
