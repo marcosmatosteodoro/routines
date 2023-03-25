@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('welcome');});
+Route::get('/laravel', function () {return view('welcome');});
+Route::get('/', function () {return 'home';});
 
 Route::resources(['categories' => 'App\Http\Controllers\CategoryController'], ['names' => resourcesName('categories')]);
 Route::resources(['activity' => 'App\Http\Controllers\ActivityController'], ['names' => resourcesName('activity')]);

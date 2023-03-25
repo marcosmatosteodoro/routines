@@ -26,4 +26,23 @@ class Category extends Model
     {
         return self::find($id);
     }
+
+    public static function createCategory(string $name): bool
+    {
+        $response = self::create(['name' => $name]);
+        return !empty($response);
+    }
+
+    public static function updateCategory(int $id, string $name): bool
+    {
+        $category = self::find($id);
+        $category->name = $name;
+        return $category->save();
+    }
+
+    public static function destroyCategory(int $id): bool
+    {
+        $category = self::find($id);
+        return $category->destroy();
+    }
 }
