@@ -10,16 +10,20 @@ class Category extends Model
     use HasFactory;
 
     protected $table = 'categories';
-
-    // para tirar a opção de created_at updated_at das tabelas
-    public $timestamps = false;
-
-    // aqui a solução para inserir produtos com status default 'A' sem precisar ter ele no form
-    // protected $attributes = ['status' => 'A'];
     
     // campos que serão preenchidos pelo Request::all()
     protected $fillable = array('name');
 
    // campos que serão exclusivo e não serão aceitos via request get ou post
-    // protected $guarded = ['id'];
+    protected $guarded = ['created_at', 'updated_at'];
+
+    public static function getCategories(): object
+    {
+        return self::all();
+    }
+
+    public static function getCategory(int $id): object
+    {
+        return self::find($id);
+    }
 }

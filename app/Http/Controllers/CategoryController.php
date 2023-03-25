@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -10,25 +11,28 @@ class CategoryController extends Controller
     protected function index(Request $request)
     {
         //GET 	/categories
-        return 'entrei em index';
+        $categories = Category::getCategories();
+        return view('categories.index', ['categories' => $categories]);
     }
 
     protected function create(Request $request)
     {
         //GET /categories/create
-        return 'entrei em create';
+        return view('categories.create');
     }
 
-    protected function show(Request $request)
+    protected function show(Request $request, int $id)
     {
         //GET /categories/{id}
-        return 'entrei em show';
+        $category = Category::getCategory($id);
+        return view('categories.show', ['category' => $category]);
     }
 
-    protected function edit(Request $request)
+    protected function edit(Request $request, $id)
     {
         //GET /categories/{id}/edit
-        return 'entrei em edit';
+        $category = Category::getCategory($id);
+        return view('categories.edit', ['category' => $category]);
     }
 
     protected function store(Request $request)
