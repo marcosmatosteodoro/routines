@@ -15,8 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {return view('welcome');});
 
-Route::resources(['categories' => 'App\Http\Controllers\CategoryController']);
-Route::resources(['activity' => 'App\Http\Controllers\ActivityController']);
-Route::resources(['rage' => 'App\Http\Controllers\RageController']);
-Route::resources(['routines' => 'App\Http\Controllers\RoutinesController']);
+Route::resources(['categories' => 'App\Http\Controllers\CategoryController'], ['names' => resourcesName('categories')]);
+Route::resources(['activity' => 'App\Http\Controllers\ActivityController'], ['names' => resourcesName('activity')]);
+Route::resources(['rage' => 'App\Http\Controllers\RageController'], ['names' => resourcesName('rage')]);
+Route::resources(['routines' => 'App\Http\Controllers\RoutinesController'], ['names' => resourcesName('routines')]);
 
+
+function resourcesName(string $name): array
+{
+    return [
+        "index"   => "$name.index",
+        "create"  => "$name.create",
+        "show"    => "$name.show",
+        "edit"    => "$name.edit",
+        "store"   => "$name.store",
+        "update"  => "$name.update",
+        "destroy" => "$name.destroy",
+    ];
+}
